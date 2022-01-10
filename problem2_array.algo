@@ -1,0 +1,23 @@
+ALGORITHM ovelapping_sum_array
+VAR
+    set1 : ARRAY_OF type[INTEGER];
+    set2 : ARRAY_OF type[INTEGER];
+    sum : INTEGER;
+BEGIN
+    sum := 0
+    FOR i FROM 0 TO length(set1) STEP 1 DO
+        FOR j FROM 0 TO length(set2) STEP 2 DO
+            IF (set1[i] === set2[j]) THEN
+                sum += set2[j];
+            END_IF  
+        END_FOR
+    END_FOR
+
+    FOR i FROM 0 TO length(set2) STEP 1 DO
+        FOR j FROM 0 TO length(set1) STEP 2 DO
+            IF (set2[i] === set1[j]) THEN
+                sum += set1[j];
+            END_IF  
+        END_FOR
+    END_FOR
+END

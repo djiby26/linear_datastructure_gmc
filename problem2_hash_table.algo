@@ -1,0 +1,36 @@
+ALGORITHM ovelapping_sum_hash_table
+VAR
+    set1 : ARRAY_OF INTEGER[];
+    set2 : ARRAY_OF INTEGER[];
+    sum : INTEGER;
+    my_hash: HASH_TABLE<INTEGER,INTEGER>;
+    counter: INTEGER;
+BEGIN
+     FOR i FROM 0 TO length(set1) STEP 1  DO
+        counter := 1;
+        FOR j FROM 0 TO length(set2) STEP 1  DO
+            IF (set1[i] == set2[j]) THEN
+                counter++;
+            END_IF
+        END_FOR
+        my_hash.insert(set1[i],counter);
+   END_FOR
+
+   FOR i FROM 0 TO length(set2) STEP 1  DO
+        counter := 1;
+        FOR j FROM 0 TO length(set1) STEP 1  DO
+            IF (set2[i] == set1[j]) THEN
+                counter++;
+            END_IF
+        END_FOR
+        my_hash.insert(set2[i],counter);
+   END_FOR
+
+    sum := 0;
+
+   FOR i FROM 0 TO length(my_hash) STEP 1 DO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+       IF (my_hash[i] > 1) THEN
+           sum += my_hash[i].key;
+       END_IF
+   END_FOR
+END
